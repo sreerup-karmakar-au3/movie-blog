@@ -8,19 +8,15 @@ const axios = require('axios')
 function MovieCards({ movieDetails }) {
 
     let deleteMovie = (id) => {
-        console.log(id);
         axios.delete(`/removedetails/${id}`)
-        .then(res => {
-            console.log(res.data);
-            window.location.reload(false);
-        })
+        .then(res => window.location.reload(false))
     }
 
     return (
         <div>
             {
                 movieDetails.map(item => (
-                    <div className="card border-light bg-light m-3" key={item._id}>
+                    <div className="card border-light bg-light m-3 shadow-lg p-3 mb-5 bg-white rounded" key={item._id}>
                         <div className="row no-gutters">
                             <div className="col-md-5">
                                 <img src={item.image} className="card-img" alt={item.movie}/>
@@ -34,7 +30,7 @@ function MovieCards({ movieDetails }) {
                                     </div>
                                     <div className="d-flex justify-content-between">
                                         <div style={{fontSize: "12px"}}><span className="font-weight-bold">Language:</span> {item.language}</div>
-                                        <div style={{fontSize: "12px"}}><span className="font-weight-bold">Duration:</span> {item.duration}</div>
+                                        <div style={{fontSize: "12px"}}><span className="font-weight-bold">Duration:</span> {item.duration} mins</div>
                                     </div>
                                     <div style={{fontSize: "12px"}}><span className="font-weight-bold">Director:</span> {item.director}</div>
                                     <div style={{fontSize: "12px"}}><span className="font-weight-bold">Casts:</span> {item.cast}</div>
